@@ -1,0 +1,37 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"id": "BusinessEntity.json",
+	"title": "BusinessEntity",
+	"description": "Represents a business entity that can be used as a base model.",
+	"type": "object",
+	"javaType": "com.microservice.orchestration.demo.entity.BusinessEntity",
+	"additionalProperties": false,
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"entityType": {
+			"type": "string"
+		},
+		"entitySpecification": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"status": {
+			"type": "string"
+		},
+		"relatedEntities": {
+			"type": "array",
+			"items": {
+				"$ref": "BusinessEntity.json#"
+			}
+		}
+	},
+	"required": [
+		"id",
+		"entityType",
+		"entitySpecification"
+	]
+}

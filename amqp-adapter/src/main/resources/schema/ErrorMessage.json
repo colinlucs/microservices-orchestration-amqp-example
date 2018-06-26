@@ -1,0 +1,23 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"id": "ErrorMessage.json",
+	"title": "ErrorMessage",
+	"description": "An Error message",
+	"type": "object",
+	"javaType": "com.microservice.orchestration.demo.entity.ErrorMessage",
+	"additionalProperties": false,
+	"properties": {
+		"code": {
+			"type": "string",
+			"description": "A short description of the error code."
+		},
+		"message": {
+			"type": "string",
+			"description": "A detailed description of the error."
+		},
+		"details": {
+			"type": "string",
+			"description": "A more detailed description of the error."
+		}
+	}
+}

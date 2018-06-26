@@ -1,0 +1,19 @@
+camunda.bpm:
+  admin-user:
+    id: admin
+    password: admin
+    firstName: Admin
+  filter:
+    create: All tasks
+    
+spring:
+  datasource:
+    url: jdbc:h2:~/camunda;DB_CLOSE_ON_EXIT=true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    exchange:
+      rpc: shoppingcart.rpc
+      pub: shoppingcart.pub
