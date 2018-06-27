@@ -8,7 +8,7 @@ camunda.bpm:
     
 spring:
   datasource:
-    url: jdbc:h2:~/camunda;DB_CLOSE_ON_EXIT=true
+    url: jdbc:h2:~/camunda;DB_CLOSE_ON_EXIT=false
   rabbitmq:
     host: localhost
     port: 5672
