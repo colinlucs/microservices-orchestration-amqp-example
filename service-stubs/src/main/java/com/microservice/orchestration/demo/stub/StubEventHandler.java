@@ -68,16 +68,16 @@ public class StubEventHandler implements EventHandler {
 	private ErrorMessage buildErrorMessage(String serviceName) {
 		if ("LocationService".equals(serviceName)) {
 			return new ErrorMessage().withCode("ERR_INVALID_ADDRESS").withMessage("Invalid address.")
-					.withDetails("Invalid address.");
+					.withDetails("Shipping Address is invalid, please contact the system administrator.");
 		} else if ("PaymentService".equals(serviceName)) {
 			return new ErrorMessage().withCode("ERR_PAYMENT_FAILURE").withMessage("Failed to collect payment.")
-					.withDetails("Failed to collect payment.");
+					.withDetails("Failed to collect payment. Please contact the system administrator.");
 		} else if ("InventoryService".equals(serviceName)) {
 			return new ErrorMessage().withCode("ERR_OUT_OF_STOCK").withMessage("Product out of stock.")
-					.withDetails("Product out of stock.");
+					.withDetails("Internal Error: Product out of stock. Please contact the system administrator.");
 		} else if ("OrderService".equals(serviceName)) {
 			return new ErrorMessage().withCode("ERR_ORDER_FAILURE").withMessage("Unable to process order.")
-					.withDetails("Unable to process order.");
+					.withDetails("Internal Error: Unable to process order, please contact the system administrator.");
 		} else {
 			return new ErrorMessage().withCode("ERR_BAD_REQUEST").withMessage("Invalid service request.")
 					.withDetails("Invalid service request.");

@@ -57,7 +57,8 @@ public class AmqpRpcClient {
 		ServiceResponse response = new ServiceResponse().withId(UUID.randomUUID().toString()).withCreatedBy("System")
 				.withCreatedDate(new Date())
 				.withErrorMessage(new ErrorMessage().withCode("ERR_SERVICE_UNAVAIL").withMessage("Service Unavaialble")
-						.withDetails(request.getServiceName() + " is not reachable."))
+						.withDetails("Internal Error: we are sorry, the " + request.getServiceName()
+								+ " is not reachable. Please try again later."))
 				.withStatusCode(Response.Status.SERVICE_UNAVAILABLE.toString()).withRelatedRequest(request.getId());
 		LOG.trace("Service timeout response: {}", response);
 		return response;

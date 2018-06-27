@@ -9,9 +9,8 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
-		<camunda.version>7.9.0</camunda.version>
 		<springBoot.version>2.0.2.RELEASE</springBoot.version>
-		<camundaSpringBoot.version>3.0.0</camundaSpringBoot.version>
+		<camundaSpringBoot.version>2.3.0</camundaSpringBoot.version>
 	</properties>
 
 	<dependencyManagement>

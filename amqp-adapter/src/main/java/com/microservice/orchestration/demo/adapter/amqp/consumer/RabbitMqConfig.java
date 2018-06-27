@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "spring.rabbitmq")
 public class RabbitMqConfig {
+	private static final String DEFAULT_EVENT_QUEUE = "DefaultEventQueue";
+	private static final String DEFAULT_SERVICE_QUEUE = "DefaultServiceQueue";
 	private List<String> serviceRoutings = new ArrayList<>();
 	private List<String> eventRoutings = new ArrayList<>();
 
@@ -21,11 +23,11 @@ public class RabbitMqConfig {
 	}
 
 	public String getServiceQueueName() {
-		return serviceRoutings.stream().findFirst().map(this::getQueue).orElse(null);
+		return serviceRoutings.stream().findFirst().map(this::getQueue).orElse(DEFAULT_SERVICE_QUEUE);
 	}
 
 	public String getEventQueueName() {
-		return eventRoutings.stream().findFirst().map(this::getQueue).orElse(null);
+		return eventRoutings.stream().findFirst().map(this::getQueue).orElse(DEFAULT_EVENT_QUEUE);
 	}
 
 	public String getExchangeName(String routing) {
