@@ -32,7 +32,7 @@ public class AmqpRpcServer {
 	@Autowired
 	EventHandler eventHandler;
 
-	@RabbitListener(queues = "#{serverQueue.name}")
+	@RabbitListener(queues = "#{serviceQueue.name}")
 	public ServiceResponse process(ServiceRequest request) {
 		LOG.trace("RPC service request: {}", request);
 		LOG.trace("Handled by: {}", eventHandler.getClass());

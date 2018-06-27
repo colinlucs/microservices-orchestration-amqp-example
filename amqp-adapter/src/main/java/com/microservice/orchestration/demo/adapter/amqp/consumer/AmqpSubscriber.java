@@ -31,7 +31,7 @@ public class AmqpSubscriber {
 	@Autowired
 	EventHandler eventHandler;
 
-	@RabbitListener(queues = "#{subscriberQueue.name}")
+	@RabbitListener(queues = "#{eventQueue.name}")
 	public void process(ServiceRequest request) {
 		LOG.trace("Subscribed event: {}", request);
 		LOG.trace("Handled by: {}", eventHandler.getClass());

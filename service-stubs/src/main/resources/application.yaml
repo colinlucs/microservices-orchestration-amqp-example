@@ -13,11 +13,12 @@ spring:
   include: 
   - default
   rabbitmq:
-    exchange:
-      rpc: shoppingcart.rpc,customer.rpc
-      pub: shoppingcart.pub,customer.pub
-    queueName: LocationServiceQueue
-    routingKey: LocationService.*
+    serviceRoutings: 
+    - shoppingcart.rpc->LocationService.*->LocationServiceQueue
+    - customer.rpc->LocationService.*->LocationServiceQueue
+    eventRoutings:
+    - shoppingcart.pub->LocationService.*->LocationEventQueue
+    - customer.pub->LocationService.*->LocationEventQueue
 
 ---
 
