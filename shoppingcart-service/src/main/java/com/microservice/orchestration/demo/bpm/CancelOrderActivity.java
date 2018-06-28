@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.microservice.orchestration.demo.dataaccess.ShoppingCartManager;
+import com.microservice.orchestration.demo.adapter.amqp.producer.AmqpRpcClient;
 import com.microservice.orchestration.demo.entity.BusinessEntity;
 import com.microservice.orchestration.demo.entity.ServiceResponse;
 
@@ -30,19 +30,21 @@ import com.microservice.orchestration.demo.entity.ServiceResponse;
  * @author <a href="mailto:colinlucs@gmail.com">Colin Lu</a>
  */
 @Component
-public class CloseShoppingCartActivity implements JavaDelegate {
-	private static final Logger LOG = LoggerFactory.getLogger(CloseShoppingCartActivity.class);
-	public static final String SERVICE_ACTION = "close";
+public class CancelOrderActivity implements JavaDelegate {
+	private static final Logger LOG = LoggerFactory.getLogger(CancelOrderActivity.class);
+
+	public static final String SERVICE_ACTION = "cancel";
 
 	@Autowired
-	ShoppingCartManager shoppingCartManager;
+	AmqpRpcClient amqpRpcClient;
 
 	@Override
-	public void execute(DelegateExecution ctx) throws Exception {
-		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_SHOPPINGCART, SERVICE_ACTION);
-		BusinessEntity sc = (BusinessEntity) ctx.getVariable(ProcessConstants.VAR_SC);
-		sc.setStatus(ProcessConstants.SC_STATUS_CLOSED);
-		ServiceResponse response = shoppingCartManager.updateShoppingCart(sc);
-		ProcessUtil.processResponse(ctx, response);
+	public void execute(DelegateExecution execution) throws Exception {
+		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_ORDER, SERVICE_ACTION);
+		BusinessEntity sc = (BusinessEntity) execution.getVariable(ProcessConstants.VAR_SC);
+		ServiceResponse response = amqpRpcClient.invokeService(
+				ProcessUtil.buildServiceRequest(sc, ProcessConstants.SERVICE_NAME_ORDER, SERVICE_ACTION));
+		ProcessUtil.processResponse(execution, response);
 	}
+
 }

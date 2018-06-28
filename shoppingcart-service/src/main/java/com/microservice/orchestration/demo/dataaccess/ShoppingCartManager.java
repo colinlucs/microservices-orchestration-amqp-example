@@ -15,13 +15,20 @@
  */
 package com.microservice.orchestration.demo.dataaccess;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
+
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.microservice.orchestration.demo.bpm.ProcessConstants;
 import com.microservice.orchestration.demo.entity.BusinessEntity;
+import com.microservice.orchestration.demo.entity.ErrorMessage;
+import com.microservice.orchestration.demo.entity.ServiceResponse;
 
 /**
  * @author <a href="mailto:colinlucs@gmail.com">Colin Lu</a>
@@ -31,12 +38,34 @@ public class ShoppingCartManager {
 	@Autowired
 	BusinessEntityRepository repository;
 
-	public BusinessEntity getShoppingCart(String id) {
-		return BusinessEntityTranslator.fromJpa(repository.findById(id).orElseGet(() -> generateShoppingCart(id)));
+	public ServiceResponse getShoppingCart(String id) {
+		BusinessEntity sc = BusinessEntityTranslator
+				.fromJpa(repository.findById(id).orElseGet(() -> generateShoppingCart(id)));
+		return generateResponse(sc, false);
 	}
 
-	public void updateShoppingCart(BusinessEntity shoppingCart) {
-		repository.save(BusinessEntityTranslator.toJpa(shoppingCart));
+	public ServiceResponse updateShoppingCart(BusinessEntity shoppingCart) {
+		boolean isInvalidSC = "invalid-ShoppingCart".equalsIgnoreCase(shoppingCart.getId());
+		if (!isInvalidSC) {
+			repository.save(BusinessEntityTranslator.toJpa(shoppingCart));
+		}
+		return generateResponse(shoppingCart, isInvalidSC);
+	}
+
+	private ServiceResponse generateResponse(BusinessEntity sc, boolean isInvalid) {
+		List<BusinessEntity> items = new ArrayList<>();
+		items.add(sc);
+		if (isInvalid) {
+			return new ServiceResponse().withCreatedBy("DataAccessService").withCreatedDate(new Date())
+					.withStatusCode(Response.Status.FORBIDDEN.toString()).withRelatedRequest(sc.getId())
+					.withErrorMessage(new ErrorMessage().withCode("ERR_INVALID_SHOPPINGCART")
+							.withMessage("Invalid Shopping Cart.").withDetails(
+									"Shopping cart is invalid. Failed to update the shopping cart, please contact the system administrator."))
+					.withItems(items);
+		}
+		return new ServiceResponse().withId(UUID.randomUUID().toString()).withCreatedBy("DataAccessService")
+				.withCreatedDate(new Date()).withStatusCode(Response.Status.OK.toString())
+				.withRelatedRequest(sc.getId()).withItems(items);
 	}
 
 	private BusinessEntityJpa generateShoppingCart(String id) {

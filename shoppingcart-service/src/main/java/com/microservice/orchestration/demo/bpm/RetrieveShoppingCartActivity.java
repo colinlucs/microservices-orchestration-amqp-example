@@ -40,7 +40,7 @@ public class RetrieveShoppingCartActivity implements JavaDelegate {
 	public void execute(DelegateExecution ctx) throws Exception {
 		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_SHOPPINGCART, SERVICE_ACTION);
 		String scId = (String) ctx.getVariable(ProcessConstants.VAR_SC_ID);
-		BusinessEntity sc = shoppingCartManager.getShoppingCart(scId);
+		BusinessEntity sc = shoppingCartManager.getShoppingCart(scId).getItems().get(0);
 		ctx.setVariable(ProcessConstants.VAR_SC, sc);
 	}
 

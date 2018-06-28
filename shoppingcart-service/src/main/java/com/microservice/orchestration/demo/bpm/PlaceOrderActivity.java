@@ -45,6 +45,7 @@ public class PlaceOrderActivity implements JavaDelegate {
 		ServiceResponse response = amqpRpcClient.invokeService(
 				ProcessUtil.buildServiceRequest(sc, ProcessConstants.SERVICE_NAME_ORDER, SERVICE_ACTION));
 		ProcessUtil.processResponse(execution, response);
+		execution.setVariable(ProcessConstants.VAR_ORDER_PLACED, true);
 	}
 
 }

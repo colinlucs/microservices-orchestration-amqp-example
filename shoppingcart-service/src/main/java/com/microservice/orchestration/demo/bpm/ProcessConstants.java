@@ -31,6 +31,7 @@ public final class ProcessConstants {
 	public static final String VAR_RESPONSE = "response";
 	public static final String VAR_PAYMENT_RESERVED = "paymentReserved";
 	public static final String VAR_INVENTORY_ALLOCATED = "inventoryAllocated";
+	public static final String VAR_ORDER_PLACED = "orderPlaced";
 
 	public static final String SERVICE_NAME_LOCATION = "LocationService";
 	public static final String SERVICE_NAME_PAYMENT = "PaymentService";

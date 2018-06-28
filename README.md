@@ -65,10 +65,10 @@ $ java -jar microservice-orchestration-using-camunda-amqp-0.0.1-SNAPSHOT.jar --s
 #### Scenario 1: Submit Shopping Cart Successfully - Transaction Committed
 
 * Request to Submit a Shopping Cart:
-``
-    POST [http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0001/submit](http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0001/submit)
+```
+    POST http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0001/submit
 
-``
+```
 	
 * Expected Response:
 
@@ -132,10 +132,10 @@ As shown in the service log, the fulfillment flow has executed all steps end-to-
 
 
 * Request to Submit a Shopping Cart:
-``
-    POST [http://localhost:8080/shoppingCart/invalid-OrderService/submit](http://localhost:8080/shoppingCart/invalid-OrderService/submit)
+```
+    POST http://localhost:8080/shoppingCart/invalid-OrderService/submit
 
-``
+```
 	
 * Expected Response:
 
@@ -167,10 +167,10 @@ As shown in the service log, the compensation flow was executed to release the r
   Shutdown the location service by killing the process.
   
 * Request to Submit a Shopping Cart:
-``
-    POST [http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0002/submit](http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0002/submit)
+```
+    POST http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0002/submit
 
-``
+```
 	
 * Expected Response:
 
