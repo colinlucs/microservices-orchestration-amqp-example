@@ -45,8 +45,14 @@ public class ShoppingCartManager {
 	}
 
 	public ServiceResponse updateShoppingCart(BusinessEntity shoppingCart) {
+		repository.save(BusinessEntityTranslator.toJpa(shoppingCart));
+		return generateResponse(shoppingCart, false);
+	}
+
+	public ServiceResponse closeShoppingCart(BusinessEntity shoppingCart) {
 		boolean isInvalidSC = "invalid-ShoppingCart".equalsIgnoreCase(shoppingCart.getId());
 		if (!isInvalidSC) {
+			shoppingCart.setStatus(ProcessConstants.SC_STATUS_CLOSED);
 			repository.save(BusinessEntityTranslator.toJpa(shoppingCart));
 		}
 		return generateResponse(shoppingCart, isInvalidSC);

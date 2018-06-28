@@ -122,7 +122,7 @@ As shown in the service log, the fulfillment flow has executed all steps end-to-
 2018-06-27 14:05:12.099  INFO 14672 --- [nio-8080-exec-1] c.m.o.d.b.RetrieveShoppingCartActivity   : execute ShoppingCartService - retrieve
 2018-06-27 14:05:12.245  INFO 14672 --- [nio-8080-exec-1] c.m.o.demo.bpm.ValidateAddressActivity   : execute LocationService - validate
 2018-06-27 14:05:13.066  INFO 14672 --- [nio-8080-exec-1] c.m.o.demo.bpm.ReservePaymentActivity    : execute PaymentService - reserve
-2018-06-27 14:05:13.280  INFO 14672 --- [nio-8080-exec-1] c.m.o.d.bpm.AllocateInventoryActivity    : execute ShoppingCartService - allocate
+2018-06-27 14:05:13.280  INFO 14672 --- [nio-8080-exec-1] c.m.o.d.bpm.AllocateInventoryActivity    : execute InventoryService - allocate
 2018-06-27 14:05:13.550  INFO 14672 --- [nio-8080-exec-1] c.m.o.demo.bpm.PlaceOrderActivity        : execute OrderService - initiate
 2018-06-27 14:05:13.864  INFO 14672 --- [nio-8080-exec-1] c.m.o.d.bpm.CloseShoppingCartActivity    : execute ShoppingCartService - close
 2018-06-27 14:05:13.889  INFO 14672 --- [nio-8080-exec-1] c.m.o.demo.bpm.NotifyCustomerActivity    : execute CustomerService - notify
@@ -156,7 +156,7 @@ As shown in the service log, the compensation flow was executed to release the r
 2018-06-27 14:12:02.760  INFO 14672 --- [nio-8080-exec-4] c.m.o.d.b.RetrieveShoppingCartActivity   : execute ShoppingCartService - retrieve
 2018-06-27 14:12:02.766  INFO 14672 --- [nio-8080-exec-4] c.m.o.demo.bpm.ValidateAddressActivity   : execute LocationService - validate
 2018-06-27 14:12:02.777  INFO 14672 --- [nio-8080-exec-4] c.m.o.demo.bpm.ReservePaymentActivity    : execute PaymentService - reserve
-2018-06-27 14:12:02.784  INFO 14672 --- [nio-8080-exec-4] c.m.o.d.bpm.AllocateInventoryActivity    : execute ShoppingCartService - allocate
+2018-06-27 14:12:02.784  INFO 14672 --- [nio-8080-exec-4] c.m.o.d.bpm.AllocateInventoryActivity    : execute InventoryService - allocate
 2018-06-27 14:12:02.817  INFO 14672 --- [nio-8080-exec-4] c.m.o.demo.bpm.PlaceOrderActivity        : execute OrderService - initiate
 2018-06-27 14:12:02.909  INFO 14672 --- [nio-8080-exec-4] c.m.o.demo.bpm.ReleasePaymentActivity    : execute PaymentService - release
 2018-06-27 14:12:02.909  INFO 14672 --- [nio-8080-exec-4] c.m.o.demo.bpm.ReleaseInventoryActivity  : execute InventoryService - release
@@ -191,3 +191,6 @@ As shown in the service log, the flow was stopped due to the timeout in invoking
 2018-06-27 14:18:49.266  INFO 14672 --- [nio-8080-exec-7] c.m.o.d.b.RetrieveShoppingCartActivity   : execute ShoppingCartService - retrieve
 2018-06-27 14:18:49.282  INFO 14672 --- [nio-8080-exec-7] c.m.o.demo.bpm.ValidateAddressActivity   : execute LocationService - validate
 ```
+## What's Next
+To keep the sample project simple, the advanced topics of event handling are not addressed, such as RPC timeout, message TTL, clustered services, etc. 
+But I hope this sample would help as a start point.

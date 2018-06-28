@@ -40,7 +40,7 @@ public class AllocateInventoryActivity implements JavaDelegate {
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_SHOPPINGCART, SERVICE_ACTION);
+		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_INVENTORY, SERVICE_ACTION);
 		BusinessEntity sc = (BusinessEntity) execution.getVariable(ProcessConstants.VAR_SC);
 		ServiceResponse response = amqpRpcClient.invokeService(
 				ProcessUtil.buildServiceRequest(sc, ProcessConstants.SERVICE_NAME_INVENTORY, SERVICE_ACTION));

@@ -41,8 +41,7 @@ public class CloseShoppingCartActivity implements JavaDelegate {
 	public void execute(DelegateExecution ctx) throws Exception {
 		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_SHOPPINGCART, SERVICE_ACTION);
 		BusinessEntity sc = (BusinessEntity) ctx.getVariable(ProcessConstants.VAR_SC);
-		sc.setStatus(ProcessConstants.SC_STATUS_CLOSED);
-		ServiceResponse response = shoppingCartManager.updateShoppingCart(sc);
+		ServiceResponse response = shoppingCartManager.closeShoppingCart(sc);
 		ProcessUtil.processResponse(ctx, response);
 	}
 }
