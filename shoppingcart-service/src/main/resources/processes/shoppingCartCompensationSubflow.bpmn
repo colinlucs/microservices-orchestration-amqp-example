@@ -40,6 +40,7 @@
     <bpmn:endEvent id="EndEvent_1kvuv6a" name="Rollback Error">
       <bpmn:incoming>SequenceFlow_0yj9xvz</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1s5dif5</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0vp8ra9</bpmn:incoming>
       <bpmn:errorEventDefinition errorRef="Error_1" />
     </bpmn:endEvent>
     <bpmn:endEvent id="EndEvent_1m61n8q" name="Rollback Completed">
@@ -61,6 +62,7 @@
       <bpmn:outgoing>SequenceFlow_1dy61pa</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:boundaryEvent id="BoundaryEvent_19wta6t" attachedToRef="ServiceTask_0wsnaw8">
+      <bpmn:outgoing>SequenceFlow_0vp8ra9</bpmn:outgoing>
       <bpmn:errorEventDefinition errorRef="Error_1" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1hut0ru" name="Yes" sourceRef="ExclusiveGateway_0vkedfp" targetRef="ServiceTask_10gl2jv">
@@ -71,6 +73,7 @@
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1dy61pa" sourceRef="ServiceTask_0wsnaw8" targetRef="EndEvent_1m61n8q" />
     <bpmn:sequenceFlow id="SequenceFlow_09gahyy" name="No" sourceRef="ExclusiveGateway_1x961zj" targetRef="EndEvent_1m61n8q" />
+    <bpmn:sequenceFlow id="SequenceFlow_0vp8ra9" sourceRef="BoundaryEvent_19wta6t" targetRef="EndEvent_1kvuv6a" />
     <bpmn:textAnnotation id="TextAnnotation_0fz5br1">
       <bpmn:text><![CDATA[Invoke Payment Service
 -- AMQP RPC]]></bpmn:text>
@@ -268,6 +271,14 @@
       <bpmndi:BPMNEdge id="Association_1t0501z_di" bpmnElement="Association_1t0501z">
         <di:waypoint xsi:type="dc:Point" x="1227" y="80" />
         <di:waypoint xsi:type="dc:Point" x="1241" y="3" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0vp8ra9_di" bpmnElement="SequenceFlow_0vp8ra9">
+        <di:waypoint xsi:type="dc:Point" x="1270" y="178" />
+        <di:waypoint xsi:type="dc:Point" x="1270" y="220" />
+        <di:waypoint xsi:type="dc:Point" x="1335" y="219" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1285" y="193" width="0" height="12" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
