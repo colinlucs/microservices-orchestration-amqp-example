@@ -80,7 +80,7 @@ $ java -jar microservice-orchestration-using-camunda-amqp-0.0.1-SNAPSHOT.jar --s
 
 
 ```json
-	{
+{
   "id": "1c93e02a-e7c6-418b-ae01-c047cefe0001",
   "entityType": "SHOPPINGCART",
   "entitySpecification": "consumerSC",
