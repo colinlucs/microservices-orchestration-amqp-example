@@ -1,16 +1,19 @@
-# Event-Driven Microservices Orchestration using Camunda, Sprint Boot and RabbitMQ
+# Event-Driven Microservices Orchestration using Camunda, Spring Boot and RabbitMQ
 
 This is an example project of my article: ["Event-driven Orchestration: An Effective Microservices Integration using BPMN and AMQP"](https://dzone.com/articles/event-driven-orchestration-an-effective-microservi).
 
 ## Overview
 This sample consists of three sub-projects:
 * __amqp-adapter__
+
 	A pre-built common adapter hiding the details of RabbitMQ/AMQP configurations.
 	
 * __shoppingcart-service__
+
     A sample orchestration service demonstrating an end-to-end shopping cart fulfillment flow.
     
 * __service-stubs__
+
     A project simulating the integrated services that communicate with the shopping cart service in either a synchronous (i.e. a RPC client) or an asynchronous (i.e. a message subscriber)  way.
 
 ## How to Use
@@ -77,43 +80,42 @@ $ java -jar microservice-orchestration-using-camunda-amqp-0.0.1-SNAPSHOT.jar --s
 
 
 ```json
-
 	{
-    "id": "1c93e02a-e7c6-418b-ae01-c047cefe0001",
-    "entityType": "SHOPPINGCART",
-    "entitySpecification": "consumerSC",
-    "name": "MySchoppingCart_1c93e02a-e7c6-418b-ae01-c047cefe0001",
-    "status": "CLOSED",
-    "relatedEntities": [
-        {
-            "id": "2ed5ef8f-1ea6-4851-8541-bf7eefbffeb4",
-            "entityType": "LOCATION",
-            "entitySpecification": "shippingAddr",
-            "name": "MyShippingAddress_1c93e02a-e7c6-418b-ae01-c047cefe0001",
-            "relatedEntities": []
-        },
-        {
-            "id": "e7af5e98-d73a-44b8-9021-e98aa448b086",
-            "entityType": "PAYMENT",
-            "entitySpecification": "creditCartPayment",
-            "name": "MyPayment_1c93e02a-e7c6-418b-ae01-c047cefe0001",
-            "relatedEntities": []
-        },
-        {
-            "id": "7a5520fc-1287-4d82-a483-c4c1e7c39e50",
-            "entityType": "PRODUCT",
-            "entitySpecification": "iphoneX_Gold_128G",
-            "name": "MyProduct_1c93e02a-e7c6-418b-ae01-c047cefe0001",
-            "relatedEntities": []
-        },
-        {
-            "id": "27f9de5c-e384-486c-9252-600381554310",
-            "entityType": "PRODUCT",
-            "entitySpecification": "iphoneX_Case",
-            "name": "MyProduct_1c93e02a-e7c6-418b-ae01-c047cefe0001",
-            "relatedEntities": []
-        }
-    ]
+  "id": "1c93e02a-e7c6-418b-ae01-c047cefe0001",
+  "entityType": "SHOPPINGCART",
+  "entitySpecification": "consumerSC",
+  "name": "MySchoppingCart_1c93e02a-e7c6-418b-ae01-c047cefe0001",
+  "status": "CLOSED",
+  "relatedEntities": [
+    {
+      "id": "2ed5ef8f-1ea6-4851-8541-bf7eefbffeb4",
+      "entityType": "LOCATION",
+      "entitySpecification": "shippingAddr",
+      "name": "MyShippingAddress_1c93e02a-e7c6-418b-ae01-c047cefe0001",
+      "relatedEntities": []
+    },
+    {
+      "id": "e7af5e98-d73a-44b8-9021-e98aa448b086",
+      "entityType": "PAYMENT",
+      "entitySpecification": "creditCartPayment",
+      "name": "MyPayment_1c93e02a-e7c6-418b-ae01-c047cefe0001",
+      "relatedEntities": []
+    },
+    {
+      "id": "7a5520fc-1287-4d82-a483-c4c1e7c39e50",
+      "entityType": "PRODUCT",
+      "entitySpecification": "iphoneX_Gold_128G",
+      "name": "MyProduct_1c93e02a-e7c6-418b-ae01-c047cefe0001",
+      "relatedEntities": []
+    },
+    {
+      "id": "27f9de5c-e384-486c-9252-600381554310",
+      "entityType": "PRODUCT",
+      "entitySpecification": "iphoneX_Case",
+      "name": "MyProduct_1c93e02a-e7c6-418b-ae01-c047cefe0001",
+      "relatedEntities": []
+    }
+  ]
 }
 ```
 * Executed Services
