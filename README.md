@@ -1,6 +1,6 @@
 # Event-Driven Microservices Orchestration using Camunda, Sprint Boot and RabbitMQ
 
-This is an example project of my article: ["Event-driven Orchestration: An Effective Microservices Integration using BPMN Workflow and AMQP Event Bus"]().
+This is an example project of my article: ["# Event-driven Orchestration: An Effective Microservices Integration using BPMN and AMQP"](https://dzone.com/articles/event-driven-orchestration-an-effective-microservi).
 
 ## Overview
 This sample consists of three sub-projects:
@@ -192,5 +192,5 @@ As shown in the service log, the flow was stopped due to the timeout in invoking
 2018-06-27 14:18:49.282  INFO 14672 --- [nio-8080-exec-7] c.m.o.demo.bpm.ValidateAddressActivity   : execute LocationService - validate
 ```
 ## What's Next
-To keep the sample project simple, the advanced topics of event handling are not addressed, such as RPC timeout, message TTL, clustered services, etc. 
+In order to keep the sample project simple, the advanced topics of event handling are not addressed, such as RPC timeout, message TTL, clustered services, etc. 
 But I hope this sample would help as a start point.
