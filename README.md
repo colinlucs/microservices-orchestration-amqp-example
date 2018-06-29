@@ -1,6 +1,6 @@
 # Event-Driven Microservices Orchestration using Camunda, Sprint Boot and RabbitMQ
 
-This is an example project of my article: ["# Event-driven Orchestration: An Effective Microservices Integration using BPMN and AMQP"](https://dzone.com/articles/event-driven-orchestration-an-effective-microservi).
+This is an example project of my article: ["Event-driven Orchestration: An Effective Microservices Integration using BPMN and AMQP"](https://dzone.com/articles/event-driven-orchestration-an-effective-microservi).
 
 ## Overview
 This sample consists of three sub-projects:
