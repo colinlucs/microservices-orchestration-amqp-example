@@ -1,4 +1,4 @@
-# Event-Driven Microservices Orchestration using Camunda, Spring Boot and RabbitMQ
+# Event-Driven Microservices Orchestration using Camunda, Spring Boot, and RabbitMQ
 
 This is an example project of my article: ["Event-driven Orchestration: An Effective Microservices Integration using BPMN and AMQP"](https://dzone.com/articles/event-driven-orchestration-an-effective-microservi).
 
@@ -14,7 +14,7 @@ This sample consists of three sub-projects:
     
 * __service-stubs__
 
-    A project simulating the integrated services that communicate with the shopping cart service in either a synchronous (i.e. a RPC client) or an asynchronous (i.e. a message subscriber)  way.
+    A project simulating the integrated services that communicate with the shopping cart service in either a synchronous (i.e. an RPC client) or an asynchronous (i.e. a message subscriber)  way.
 
 ## How to Use
 ### Prerequisite
@@ -44,7 +44,7 @@ The following services will be launched as the integrated participants in the sh
 * Payment Service: process payment for the shopping cart
 * Inventory Service: allocate product from inventory
 * Order Service: fulfill the customer order
-* Customer Service: notify customer about the shopping fulfillment state
+* Customer Service: notify the customer about the shopping fulfillment state
 * Back Office Service: handle the exception if  transaction rollback is not possible
 
 Launch the service simulator respectively as below:
