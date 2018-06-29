@@ -22,7 +22,7 @@ This sample consists of three sub-projects:
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [RabbitMQ](https://www.rabbitmq.com/)
 *  [Camunda BPM](https://camunda.com/)
-* [curl](https://curl.haxx.se/) or [postman](https://www.getpostman.com/)
+* [cURL](https://curl.haxx.se/) or [Postman](https://www.getpostman.com/)
 
 ### Build
 * Clone or download project from [github](https://github.com/colinlucs/microservices-orchestration-amqp-example.git)
