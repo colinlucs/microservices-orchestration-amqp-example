@@ -21,7 +21,7 @@ This sample consists of three sub-projects:
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [RabbitMQ](https://www.rabbitmq.com/)
-*  [Camunda BPM](https://camunda.com/)
+* [Camunda BPM](https://camunda.com/)
 * [cURL](https://curl.haxx.se/) or [Postman](https://www.getpostman.com/)
 
 ### Build
@@ -69,7 +69,7 @@ $ java -jar microservice-orchestration-using-camunda-amqp-0.0.1-SNAPSHOT.jar --s
 
 * Request to Submit a Shopping Cart:
 ```
-    POST http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0001/submit
+$ curl -H "Content-Type: application/json" -X POST http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0001/submit
 
 ```
 	
@@ -135,7 +135,7 @@ As shown in the service log, the fulfillment flow has executed all steps end-to-
 
 * Request to Submit a Shopping Cart:
 ```
-    POST http://localhost:8080/shoppingCart/invalid-OrderService/submit
+$ curl -H "Content-Type: application/json" -X POST http://localhost:8080/shoppingCart/invalid-OrderService/submit
 
 ```
 	
@@ -170,7 +170,7 @@ As shown in the service log, the compensation flow was executed to release the r
   
 * Request to Submit a Shopping Cart:
 ```
-    POST http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0002/submit
+$ curl -H "Content-Type: application/json" -X POST http://localhost:8080/shoppingCart/1c93e02a-e7c6-418b-ae01-c047cefe0002/submit
 
 ```
 	
