@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 
 import com.microservice.orchestration.demo.dataaccess.ShoppingCartManager;
 import com.microservice.orchestration.demo.entity.BusinessEntity;
+import com.microservice.orchestration.demo.entity.ServiceResponse;
 
 /**
  * @author <a href="mailto:colinlucs@gmail.com">Colin Lu</a>
@@ -40,7 +41,9 @@ public class RetrieveShoppingCartActivity implements JavaDelegate {
 	public void execute(DelegateExecution ctx) throws Exception {
 		LOG.info("execute {} - {}", ProcessConstants.SERVICE_NAME_SHOPPINGCART, SERVICE_ACTION);
 		String scId = (String) ctx.getVariable(ProcessConstants.VAR_SC_ID);
-		BusinessEntity sc = shoppingCartManager.getShoppingCart(scId).getItems().get(0);
+		ServiceResponse response = shoppingCartManager.getShoppingCart(scId);
+		ProcessUtil.processResponse(ctx, response);
+		BusinessEntity sc = response.getItems().get(0);
 		ctx.setVariable(ProcessConstants.VAR_SC, sc);
 	}
 

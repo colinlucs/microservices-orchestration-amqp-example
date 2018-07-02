@@ -41,7 +41,15 @@ public class ShoppingCartManager {
 	public ServiceResponse getShoppingCart(String id) {
 		BusinessEntity sc = BusinessEntityTranslator
 				.fromJpa(repository.findById(id).orElseGet(() -> generateShoppingCart(id)));
-		return generateResponse(sc, false);
+		return validateShoppingCart(sc);
+	}
+
+	public ServiceResponse validateShoppingCart(BusinessEntity shoppingCart) {
+		boolean isInvalidSC = false;
+		if (ProcessConstants.SC_STATUS_CLOSED.equalsIgnoreCase(shoppingCart.getStatus())) {
+			isInvalidSC = true;
+		}
+		return generateResponse(shoppingCart, isInvalidSC);
 	}
 
 	public ServiceResponse updateShoppingCart(BusinessEntity shoppingCart) {
@@ -65,8 +73,8 @@ public class ShoppingCartManager {
 			return new ServiceResponse().withCreatedBy("DataAccessService").withCreatedDate(new Date())
 					.withStatusCode(Response.Status.FORBIDDEN.toString()).withRelatedRequest(sc.getId())
 					.withErrorMessage(new ErrorMessage().withCode("ERR_INVALID_SHOPPINGCART")
-							.withMessage("Invalid Shopping Cart.").withDetails(
-									"Shopping cart is invalid. Failed to update the shopping cart, please contact the system administrator."))
+							.withMessage("Invalid Shopping Cart.")
+							.withDetails("Shopping cart is invalid. Please contact the system administrator."))
 					.withItems(items);
 		}
 		return new ServiceResponse().withId(UUID.randomUUID().toString()).withCreatedBy("DataAccessService")
